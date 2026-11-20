@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#08080A"><title>Política de Privacidade · APEXX</title>
+<style>
+:root{color-scheme:dark;--void:#08080A;--lil:#C084FC;--soft:#9A9AA6;--line:rgba(255,255,255,.1)}
+*{box-sizing:border-box}html,body{margin:0;background:var(--void);color:#fff;font:400 16px/1.7 system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:720px;margin:0 auto;padding:calc(24px + env(safe-area-inset-top,0px)) 20px calc(60px + env(safe-area-inset-bottom,0px))}
+a{color:var(--lil)}h1{font-size:28px;line-height:1.25;margin:18px 0 4px}h2{font-size:18px;margin:30px 0 6px}
+p,li{color:#DADAE2}ul{padding-left:20px}.s{color:var(--soft);font-size:14px}
+nav{display:flex;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:14px}
+</style></head><body><main>
+<a href="app/" id="back">← Voltar ao app</a>
+<h1>Política de Privacidade</h1><p class="s">Como tratamos seus dados, conforme a LGPD (Lei 13.709/2018). Atualizado em <span data-k="atualizado"></span>.</p>
+
+<h2>1. Quem é o controlador</h2>
+<p><span data-k="empresa"></span>, CNPJ <span data-k="cnpj"></span>. Contato do encarregado de dados (DPO): <a data-mail></a>.</p>
+<h2>2. Dados que tratamos</h2>
+<ul><li><b>Conta:</b> seu e-mail.</li>
+<li><b>Perfil e uso:</b> nome, tarefas, conclusões por dia, meta semanal.</li>
+<li><b>Consentimentos:</b> registro do seu consentimento para a análise de foto (data e versão).</li>
+<li><b>Análise por IA:</b> a foto enviada (temporariamente) e o resultado: notas por critério, observações, dicas, tarefas sugeridas.</li>
+<li><b>Plano e pagamento:</b> plano, status, datas, valores e identificadores do Stripe. O número do cartão fica só com o Stripe.</li>
+<li><b>Técnicos:</b> registros de uso do serviço (data, modelo de IA usado, tempo de resposta, falhas) para segurança e limites de uso.</li></ul>
+<h2>3. Sua foto</h2>
+<ul><li>A foto é reduzida no seu aparelho e enviada ao nosso servidor, que a repassa ao provedor de IA (Anthropic) somente para gerar a análise.</li>
+<li><b>Nós não guardamos a foto.</b> Guardamos apenas o resultado da análise. O provedor de IA trata a imagem conforme a política dele.</li>
+<li>Tratamos a imagem do rosto como dado sensível, com seu <b>consentimento específico</b>, que você dá ao marcar a caixa antes de cada análise e pode revogar a qualquer momento (excluindo os dados ou a conta).</li>
+<li>Não usamos reconhecimento facial para identificar pessoas, não deduzimos saúde, idade, etnia ou personalidade, e não usamos a foto para publicidade.</li></ul>
+<h2>4. Para que usamos e em qual base legal</h2>
+<ul><li>Fornecer a conta, o acompanhamento e o plano: execução do contrato.</li>
+<li>Analisar sua foto: consentimento.</li>
+<li>Segurança, prevenção a abuso e limites de uso: legítimo interesse.</li>
+<li>Obrigações fiscais e de pagamento: cumprimento de obrigação legal.</li></ul>
+<h2>5. Com quem compartilhamos</h2>
+<ul><li><b>Supabase:</b> banco de dados e login (servidores em São Paulo, Brasil).</li>
+<li><b>Vercel:</b> hospedagem do app.</li>
+<li><b>Stripe:</b> pagamentos.</li>
+<li><b>Anthropic:</b> processamento da foto por IA.</li></ul>
+<p>Alguns desses provedores operam fora do Brasil, como nos Estados Unidos, o que configura transferência internacional de dados, feita para a execução do serviço e com as garantias previstas na LGPD. Não vendemos seus dados.</p>
+<h2>6. Por quanto tempo guardamos</h2>
+<p>Enquanto sua conta existir. Ao excluir a conta, apagamos seus dados (perfil, tarefas, histórico, análises e consentimentos) e cancelamos a assinatura. Registros de pagamento podem permanecer no Stripe pelo prazo exigido em lei.</p>
+<h2>7. Seus direitos (art. 18 da LGPD)</h2>
+<p>Você pode pedir confirmação do tratamento, acesso, correção, anonimização, portabilidade, eliminação, informação sobre compartilhamento e revogação do consentimento. No app: Perfil &gt; Apagar todos os meus dados ou Excluir minha conta. Ou escreva para <a data-mail></a>. Você também pode reclamar à Autoridade Nacional de Proteção de Dados (ANPD).</p>
+<h2>8. Armazenamento no aparelho e terceiros</h2>
+<p>O app guarda dados no seu aparelho (armazenamento local e cache offline) para funcionar sem internet. Não usamos cookies de publicidade nem ferramentas de rastreamento. O app carrega fontes (Google Fonts) e uma biblioteca (jsDelivr) de servidores de terceiros, que podem registrar seu endereço IP.</p>
+<h2>9. Menores de idade</h2>
+<p>O APEXX é só para maiores de 18 anos. Não analisamos fotos de menores.</p>
+<h2>10. Segurança</h2>
+<p>Usamos conexão criptografada (HTTPS) e regras de acesso no banco para que cada pessoa veja apenas os próprios dados. Nenhum sistema é 100% seguro; em caso de incidente relevante, avisaremos você e a ANPD conforme a lei.</p>
+<h2>11. Mudanças</h2>
+<p>Se esta política mudar, avisaremos no app. A data de atualização está no topo.</p>
+<nav><a href="termos.html">Termos de uso</a><a href="privacidade.html">Privacidade</a><a href="reembolso.html">Reembolso</a></nav>
+<p class="s"><span data-k="empresa"></span> · CNPJ <span data-k="cnpj"></span> · <span data-k="email"></span></p>
+</main>
+<script src="legal-config.js"></script>
+<script>var c=window.APEXX_LEGAL||{};document.querySelectorAll("[data-k]").forEach(function(e){e.textContent=c[e.dataset.k]||""});
+document.querySelectorAll("a[data-mail]").forEach(function(a){if(c.email)a.href="mailto:"+c.email;a.textContent=c.email||""});</script>
+</body></html>

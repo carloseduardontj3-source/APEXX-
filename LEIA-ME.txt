@@ -1,0 +1,53 @@
+APEXX - PWA + Supabase + Stripe + IA
+====================================
+
+ESTRUTURA
+index.html            landing (botao abre o app)
+app/index.html        o app
+api/analyze.js        analise por IA da foto (Anthropic)
+api/checkout.js       abre o pagamento (Stripe)
+api/portal.js         gerenciar/cancelar assinatura (Stripe)
+api/stripe-webhook.js confirma pagamento e libera o Premium
+api/account-delete.js exclui a conta e cancela a assinatura
+termos.html, privacidade.html, reembolso.html   paginas legais
+legal-config.js       DADOS DA SUA EMPRESA (preencha!)
+.env.example          lista das variaveis secretas
+sw.js, manifest.webmanifest, icons/             parte instalavel (PWA)
+
+COMO FUNCIONA
+- Os dados ficam no aparelho (localStorage "apexx:v1") e, se a pessoa entra com e-mail
+  (Perfil > Conta), sincronizam com o Supabase (profiles, user_goals, user_tasks,
+  task_completions, user_consents, user_analysis).
+- A chave do Supabase no HTML e a publishable (publica). A protecao vem do RLS.
+  A service_role NUNCA vai no app: so nas variaveis da Vercel.
+- A foto da analise e reduzida no aparelho, enviada a /api/analyze, repassada a IA e DESCARTADA.
+  So o resultado e salvo. Free: 1 analise/semana. Premium: 5/dia (mude em .env).
+- A IA avalia so apresentacao (luz, cabelo, acabamento, pele visivel, estilo). Nao avalia tracos
+  do rosto, saude, idade ou personalidade. Isso esta no prompt de api/analyze.js (SYSTEM).
+
+PUBLICAR - PASSO A PASSO
+1. Preencha legal-config.js (empresa, CNPJ, e-mail, cidade).
+2. Vercel: crie um projeto novo e suba esta pasta (ou o zip).
+3. Vercel > Settings > Environment Variables: preencha tudo do .env.example.
+   (service_role: Supabase > Settings > API Keys. Chave da IA: console.anthropic.com.)
+4. Supabase > Authentication > URL Configuration: Site URL = endereco da Vercel;
+   Redirect URLs = https://SEU-DOMINIO/app/
+5. Supabase > Authentication > Email Templates > Magic Link: inclua {{ .Token }} no texto
+   (codigo de 6 digitos, necessario para o app instalado no iPhone).
+   O envio de e-mail padrao tem limite baixo: configure um SMTP proprio antes de vender.
+6. Stripe: produto "APEXX Premium" com 2 precos mensais (R$ 29,90 e US$ 19,90), cole os
+   price_... em STRIPE_PRICE_BRL / STRIPE_PRICE_USD. Ative o portal do cliente
+   (Settings > Billing > Customer portal) permitindo cancelar.
+7. Faca o deploy. Stripe > Developers > Webhooks > Add endpoint:
+   https://SEU-DOMINIO/api/stripe-webhook
+   Eventos: checkout.session.completed, customer.subscription.created,
+   customer.subscription.updated, customer.subscription.deleted, invoice.paid
+   Cole o whsec_... em STRIPE_WEBHOOK_SECRET e faca novo deploy.
+8. Teste tudo com sk_test_ (cartao 4242 4242 4242 4242) antes de usar sk_live_.
+
+TESTE ANTES DE ABRIR AO PUBLICO
+[ ] entrar com e-mail  [ ] criar tarefa e abrir em outro aparelho  [ ] analisar uma foto
+[ ] foto de nao-pessoa e foto escura (deve recusar)  [ ] 2a analise no Free (deve bloquear)
+[ ] assinar com cartao de teste (Premium libera)  [ ] cancelar no portal  [ ] excluir conta
+
+ATUALIZAR: mude VERSION em sw.js (ex.: apexx-v6) a cada nova versao.
